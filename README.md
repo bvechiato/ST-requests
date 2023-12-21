@@ -2,6 +2,8 @@ Uses endpoints given in the [ST 2023-24 Sample Project](https://git.ecdf.ed.ac.u
 
 For payloads, Body > raw Json 
 
+![payloads](payloads.png)
+
 ## table of contents
 - [table of contents](#table-of-contents)
 - [authorisation](#authorisation)
@@ -31,6 +33,8 @@ For payloads, Body > raw Json
 2. in Authorization, 
    1. add Bearer Token 
    2. add user's token
+   
+![authorisation](authorization.png)
 
 ## user - all
 ### register
