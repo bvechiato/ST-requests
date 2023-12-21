@@ -22,6 +22,9 @@ For payloads, Body > raw Json
   - [delete order by orderID](#delete-order-by-orderid)
 - [order - admin](#order---admin)
   - [get orders by userID](#get-orders-by-userid)
+- [models](#models)
+  - [user](#user)
+  - [order](#order)
 
 ## authorisation
 1. [log user in](#post-localhost3000userslogin), get accessToken from their response
@@ -103,7 +106,7 @@ requires [authorisation](#authorisation)
 ```
 
 ## user - admin
-all require [authorisation](#authorisation)
+all require [authorisation](#authorisation) as admin
 ### get all users
 ```
     [GET] localhost:3000/users 
@@ -162,6 +165,7 @@ all require [authorisation](#authorisation)
         "__v": 0
     }
 ```
+
 ## order - all
 ### place order
 requires [authorisation](#authorisation)
@@ -263,7 +267,7 @@ admins can delete every order, users can only delete an order if they made it
 
 ## order - admin
 ### get orders by userID
-requires admin [authorisation](#authorisation)
+requires [authorisation](#authorisation) as admin
 
 ```
     [GET] localhost:3000/orders/user/65847dceece3f2440b7d0a9a
@@ -279,3 +283,41 @@ requires admin [authorisation](#authorisation)
     ]
 
 ```
+
+## models
+### user
+    name:
+        string 
+        required
+
+    email:
+        string
+        required
+        unique
+        lowercase
+        valid email
+
+    password:
+        string
+        required
+    
+    address:
+        string
+        required
+
+    role:
+        string
+        "User" default or "Admin"
+        required
+
+### order
+    type:
+        string
+        "Box1" default or "Box2"
+        not required
+    
+    description:
+        string
+        not required
+    
+intentionally let not required for DB testing purposes
