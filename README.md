@@ -1,20 +1,30 @@
-# ST-requests
+# st-requests
+Uses endpoints given in the [ST 2023-24 Sample Project](https://git.ecdf.ed.ac.uk/s2119967/stsample-2023-2024). Adapted from lecture on the 26th of September.
 
-# Table of contents
-- [ST-requests](#st-requests)
-- [Table of contents](#table-of-contents)
-  - [User - all](#user---all)
-    - [localhost:3000/users/register](#localhost3000usersregister)
-    - [localhost:3000/users/login](#localhost3000userslogin)
-    - [localhost:3000/user](#localhost3000user)
-    - [localhost:3000/user (change info)](#localhost3000user-change-info)
-  - [User - admin](#user---admin)
-    - [localhost:3000/users](#localhost3000users)
-    - [localhost:3000/users/:userID](#localhost3000usersuserid)
-    - [localhost:3000/user/:userID](#localhost3000useruserid)
+For payloads, Body > raw Json 
 
-## User - all
-### localhost:3000/users/register
+## table of contents
+- [st-requests](#st-requests)
+  - [table of contents](#table-of-contents)
+  - [authorisation](#authorisation)
+  - [user - all](#user---all)
+    - [(POST) localhost:3000/users/register](#post-localhost3000usersregister)
+    - [(POST) localhost:3000/users/login](#post-localhost3000userslogin)
+    - [(GET) localhost:3000/user](#get-localhost3000user)
+    - [(PUT) localhost:3000/user](#put-localhost3000user)
+  - [user - admin](#user---admin)
+    - [(GET) localhost:3000/users](#get-localhost3000users)
+    - [(GET) localhost:3000/users/:userID](#get-localhost3000usersuserid)
+    - [(DELETE) localhost:3000/user/:userID](#delete-localhost3000useruserid)
+
+## authorisation
+1. [log user in](#post-localhost3000userslogin), get accessToken from their response
+2. in Authorization, 
+   1. add Bearer Token 
+   2. add user's token
+
+## user - all
+### (POST) localhost:3000/users/register
 
 ```
     [POST] localhost:3000/users/register
@@ -27,7 +37,7 @@
     }
 ```
 
-### localhost:3000/users/login
+### (POST) localhost:3000/users/login
 
 ```
     [POST] localhost:3000/users/login
@@ -48,12 +58,8 @@
     }
 ```
 
-### localhost:3000/user
-For it to work:
-1. localhost:3000/users/login user, get accessToken from their login response
-2. in Authorization, 
-   1. add Bearer Token 
-   2. add user's token
+### (GET) localhost:3000/user
+requires [authorisation](#authorisation)
 
 ```
     [GET] localhost:3000/user
@@ -69,12 +75,8 @@ For it to work:
     }
 ```
 
-### localhost:3000/user (change info)
-For it to work:
-1. localhost:3000/users/login user, get accessToken from their login response
-2. in Authorization, 
-   1. add Bearer Token 
-   2. add user's token
+### (PUT) localhost:3000/user
+requires [authorisation](#authorisation)
 
 ```
     [PUT] localhost:3000/user
@@ -94,14 +96,9 @@ For it to work:
     }
 ```
 
-## User - admin
-For all to work:
-1. localhost:3000/users/login admin, get accessToken from their login response
-2. in Authorization, 
-   1. add Bearer Token 
-   2. add admin's token
-
-### localhost:3000/users 
+## user - admin
+all require [authorisation](#authorisation)
+### (GET) localhost:3000/users 
 ```
     [GET] localhost:3000/users 
 
@@ -128,7 +125,7 @@ For all to work:
 ```
 
 
-### localhost:3000/users/:userID
+### (GET) localhost:3000/users/:userID
 
 ```
     [GET] localhost:3000/users/658465d4fbd054c275c88a2b
@@ -144,8 +141,7 @@ For all to work:
     }
 ```
 
-### localhost:3000/user/:userID
-
+### (DELETE) localhost:3000/user/:userID
 
 ```
     [DELETE] localhost:3000/user/6584665efbd054c275c88a2e
