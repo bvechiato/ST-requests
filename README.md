@@ -27,7 +27,7 @@ For payloads, Body > raw Json
   - [order](#order)
 
 ## authorisation
-1. [log user in](#post-localhost3000userslogin), get accessToken from their response
+1. [log user in](#login), get accessToken from their response
 2. in Authorization, 
    1. add Bearer Token 
    2. add user's token
