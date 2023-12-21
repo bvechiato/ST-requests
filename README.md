@@ -16,7 +16,7 @@
 ## User - all
 ### localhost:3000/users/register
 
-```json
+```
     [POST] localhost:3000/users/register
     {
         "name": "Test User",
@@ -29,7 +29,7 @@
 
 ### localhost:3000/users/login
 
-```json
+```
     [POST] localhost:3000/users/login
     {
         "email": "test@test.com",
@@ -55,7 +55,7 @@ For it to work:
    1. add Bearer Token 
    2. add user's token
 
-```json
+```
     [GET] localhost:3000/user
 
     -> {
@@ -76,7 +76,7 @@ For it to work:
    1. add Bearer Token 
    2. add user's token
 
-```json
+```
     [PUT] localhost:3000/user
     {
         "password": "new password"
@@ -102,7 +102,7 @@ For all to work:
    2. add admin's token
 
 ### localhost:3000/users 
-```json
+```
     [GET] localhost:3000/users 
 
     -> [ 
@@ -130,7 +130,7 @@ For all to work:
 
 ### localhost:3000/users/:userID
 
-```json
+```
     [GET] localhost:3000/users/658465d4fbd054c275c88a2b
 
     -> {
@@ -147,7 +147,7 @@ For all to work:
 ### localhost:3000/user/:userID
 
 
-```json
+```
     [DELETE] localhost:3000/user/6584665efbd054c275c88a2e
     
     -> {
