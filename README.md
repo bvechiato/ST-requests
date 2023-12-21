@@ -1,21 +1,19 @@
-# st-requests
 Uses endpoints given in the [ST 2023-24 Sample Project](https://git.ecdf.ed.ac.uk/s2119967/stsample-2023-2024). Adapted from lecture on the 26th of September.
 
 For payloads, Body > raw Json 
 
 ## table of contents
-- [st-requests](#st-requests)
-  - [table of contents](#table-of-contents)
-  - [authorisation](#authorisation)
-  - [user - all](#user---all)
-    - [(POST) localhost:3000/users/register](#post-localhost3000usersregister)
-    - [(POST) localhost:3000/users/login](#post-localhost3000userslogin)
-    - [(GET) localhost:3000/user](#get-localhost3000user)
-    - [(PUT) localhost:3000/user](#put-localhost3000user)
-  - [user - admin](#user---admin)
-    - [(GET) localhost:3000/users](#get-localhost3000users)
-    - [(GET) localhost:3000/users/:userID](#get-localhost3000usersuserid)
-    - [(DELETE) localhost:3000/user/:userID](#delete-localhost3000useruserid)
+- [table of contents](#table-of-contents)
+- [authorisation](#authorisation)
+- [user - all](#user---all)
+  - [(POST) localhost:3000/users/register](#post-localhost3000usersregister)
+  - [(POST) localhost:3000/users/login](#post-localhost3000userslogin)
+  - [(GET) localhost:3000/user](#get-localhost3000user)
+  - [(PUT) localhost:3000/user](#put-localhost3000user)
+- [user - admin](#user---admin)
+  - [(GET) localhost:3000/users](#get-localhost3000users)
+  - [(GET) localhost:3000/users/:userID](#get-localhost3000usersuserid)
+  - [(DELETE) localhost:3000/user/:userID](#delete-localhost3000useruserid)
 
 ## authorisation
 1. [log user in](#post-localhost3000userslogin), get accessToken from their response
