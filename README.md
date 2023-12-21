@@ -14,6 +14,14 @@ For payloads, Body > raw Json
   - [(GET) localhost:3000/users](#get-localhost3000users)
   - [(GET) localhost:3000/users/:userID](#get-localhost3000usersuserid)
   - [(DELETE) localhost:3000/user/:userID](#delete-localhost3000useruserid)
+- [order - all](#order---all)
+  - [(POST) localhost:3000/order](#post-localhost3000order)
+  - [(GET) localhost:3000/order/:orderID](#get-localhost3000orderorderid)
+  - [(GET) localhost:3000/orders](#get-localhost3000orders)
+  - [(PUT) localhost:3000/order](#put-localhost3000order)
+  - [(DELETE) localhost:3000/order/:orderID](#delete-localhost3000orderorderid)
+- [order - admin](#order---admin)
+  - [(GET) localhost:3000/orders/user/:userID](#get-localhost3000ordersuseruserid)
 
 ## authorisation
 1. [log user in](#post-localhost3000userslogin), get accessToken from their response
@@ -153,4 +161,121 @@ all require [authorisation](#authorisation)
         "role": "User",
         "__v": 0
     }
+```
+## order - all
+### (POST) localhost:3000/order
+requires [authorisation](#authorisation)
+
+admins cannot make orders for other users, only themselves
+
+```
+    [POST] localhost:3000/order
+    {
+        "type": "Box2",
+        "description": "Secret"
+    }  
+    // if type isn't specified, Box1 is default
+
+
+    -> {
+        "type": "Box2",
+        "description": "Secret",
+        "_id": "65847e8eece3f2440b7d0a9e",
+        "user": "65847dceece3f2440b7d0a9a",
+        "__v": 0
+    }
+```
+
+### (GET) localhost:3000/order/:orderID
+requires [authorisation](#authorisation) 
+
+admins can see every order, users can only see an order by ID if they made it
+
+```
+    [GET] localhost:3000/order/65847e8eece3f2440b7d0a9e
+
+    -> {
+        "_id": "65847e8eece3f2440b7d0a9e",
+        "type": "Box2",
+        "description": "Secret",
+        "user": "65847dceece3f2440b7d0a9a",
+        "__v": 0
+    }
+```
+
+### (GET) localhost:3000/orders
+requires [authorisation](#authorisation)
+
+
+```
+    [GET] localhost:3000/orders
+
+    -> [
+        {
+            "_id": "65847e8eece3f2440b7d0a9e",
+            "type": "Box2",
+            "description": "Secret",
+            "user": "65847dceece3f2440b7d0a9a",
+            "__v": 0
+        }
+    ]
+```
+
+### (PUT) localhost:3000/order
+requires [authorisation](#authorisation)
+
+updates existing order, admins can update other users' orders
+
+```
+    [PUT] localhost:3000/order
+    {
+        "_id": "65847e8eece3f2440b7d0a9e",
+        "description": "More secretive"
+    }
+
+    -> {
+        "_id": "65847e8eece3f2440b7d0a9e",
+        "type": "Box2",
+        "description": "More secretive",
+        "user": "65847dceece3f2440b7d0a9a",
+        "__v": 0
+    }
+
+```
+
+### (DELETE) localhost:3000/order/:orderID
+requires [authorisation](#authorisation) 
+
+admins can delete every order, users can only delete an order if they made it
+
+```
+    [DELETE] localhost:3000/order/65847e8eece3f2440b7d0a9e
+
+    -> {
+        "_id": "65847e8eece3f2440b7d0a9e",
+        "type": "Box2",
+        "description": "More secretive",
+        "user": "65847dceece3f2440b7d0a9a",
+        "__v": 0
+    }
+```
+
+
+## order - admin
+### (GET) localhost:3000/orders/user/:userID
+requires admin [authorisation](#authorisation)
+
+```
+    [GET] localhost:3000/orders/user/65847dceece3f2440b7d0a9a
+
+    -> [
+        {
+            "_id": "65847e8eece3f2440b7d0a9e",
+            "type": "Box2",
+            "description": "More secretive",
+            "user": "65847dceece3f2440b7d0a9a",
+            "__v": 0
+        }
+    ]
+
 ```
