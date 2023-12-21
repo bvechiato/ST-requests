@@ -1,5 +1,17 @@
 # ST-requests
 
+# Table of contents
+- [ST-requests](#st-requests)
+- [Table of contents](#table-of-contents)
+  - [User - all](#user---all)
+    - [localhost:3000/users/register](#localhost3000usersregister)
+    - [localhost:3000/users/login](#localhost3000userslogin)
+    - [localhost:3000/user](#localhost3000user)
+    - [localhost:3000/user (change info)](#localhost3000user-change-info)
+  - [User - admin](#user---admin)
+    - [localhost:3000/users](#localhost3000users)
+    - [localhost:3000/users/:userID](#localhost3000usersuserid)
+    - [localhost:3000/user/:userID](#localhost3000useruserid)
 
 ## User - all
 ### localhost:3000/users/register
