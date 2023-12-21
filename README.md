@@ -6,22 +6,22 @@ For payloads, Body > raw Json
 - [table of contents](#table-of-contents)
 - [authorisation](#authorisation)
 - [user - all](#user---all)
-  - [(POST) localhost:3000/users/register](#post-localhost3000usersregister)
-  - [(POST) localhost:3000/users/login](#post-localhost3000userslogin)
-  - [(GET) localhost:3000/user](#get-localhost3000user)
-  - [(PUT) localhost:3000/user](#put-localhost3000user)
+  - [register](#register)
+  - [login](#login)
+  - [get user details](#get-user-details)
+  - [update user details](#update-user-details)
 - [user - admin](#user---admin)
-  - [(GET) localhost:3000/users](#get-localhost3000users)
-  - [(GET) localhost:3000/users/:userID](#get-localhost3000usersuserid)
-  - [(DELETE) localhost:3000/user/:userID](#delete-localhost3000useruserid)
+  - [get all users](#get-all-users)
+  - [get user by userID](#get-user-by-userid)
+  - [delete user by userID](#delete-user-by-userid)
 - [order - all](#order---all)
-  - [(POST) localhost:3000/order](#post-localhost3000order)
-  - [(GET) localhost:3000/order/:orderID](#get-localhost3000orderorderid)
-  - [(GET) localhost:3000/orders](#get-localhost3000orders)
-  - [(PUT) localhost:3000/order](#put-localhost3000order)
-  - [(DELETE) localhost:3000/order/:orderID](#delete-localhost3000orderorderid)
+  - [place order](#place-order)
+  - [get order by orderID](#get-order-by-orderid)
+  - [get all orders](#get-all-orders)
+  - [update order by orderID](#update-order-by-orderid)
+  - [delete order by orderID](#delete-order-by-orderid)
 - [order - admin](#order---admin)
-  - [(GET) localhost:3000/orders/user/:userID](#get-localhost3000ordersuseruserid)
+  - [get orders by userID](#get-orders-by-userid)
 
 ## authorisation
 1. [log user in](#post-localhost3000userslogin), get accessToken from their response
@@ -30,7 +30,7 @@ For payloads, Body > raw Json
    2. add user's token
 
 ## user - all
-### (POST) localhost:3000/users/register
+### register
 
 ```
     [POST] localhost:3000/users/register
@@ -43,7 +43,7 @@ For payloads, Body > raw Json
     }
 ```
 
-### (POST) localhost:3000/users/login
+### login
 
 ```
     [POST] localhost:3000/users/login
@@ -64,7 +64,7 @@ For payloads, Body > raw Json
     }
 ```
 
-### (GET) localhost:3000/user
+### get user details
 requires [authorisation](#authorisation)
 
 ```
@@ -81,7 +81,7 @@ requires [authorisation](#authorisation)
     }
 ```
 
-### (PUT) localhost:3000/user
+### update user details
 requires [authorisation](#authorisation)
 
 ```
@@ -104,7 +104,7 @@ requires [authorisation](#authorisation)
 
 ## user - admin
 all require [authorisation](#authorisation)
-### (GET) localhost:3000/users 
+### get all users
 ```
     [GET] localhost:3000/users 
 
@@ -131,7 +131,7 @@ all require [authorisation](#authorisation)
 ```
 
 
-### (GET) localhost:3000/users/:userID
+### get user by userID
 
 ```
     [GET] localhost:3000/users/658465d4fbd054c275c88a2b
@@ -147,7 +147,7 @@ all require [authorisation](#authorisation)
     }
 ```
 
-### (DELETE) localhost:3000/user/:userID
+### delete user by userID
 
 ```
     [DELETE] localhost:3000/user/6584665efbd054c275c88a2e
@@ -163,7 +163,7 @@ all require [authorisation](#authorisation)
     }
 ```
 ## order - all
-### (POST) localhost:3000/order
+### place order
 requires [authorisation](#authorisation)
 
 admins cannot make orders for other users, only themselves
@@ -186,7 +186,7 @@ admins cannot make orders for other users, only themselves
     }
 ```
 
-### (GET) localhost:3000/order/:orderID
+### get order by orderID
 requires [authorisation](#authorisation) 
 
 admins can see every order, users can only see an order by ID if they made it
@@ -203,7 +203,7 @@ admins can see every order, users can only see an order by ID if they made it
     }
 ```
 
-### (GET) localhost:3000/orders
+### get all orders
 requires [authorisation](#authorisation)
 
 
@@ -221,7 +221,7 @@ requires [authorisation](#authorisation)
     ]
 ```
 
-### (PUT) localhost:3000/order
+### update order by orderID
 requires [authorisation](#authorisation)
 
 updates existing order, admins can update other users' orders
@@ -243,7 +243,7 @@ updates existing order, admins can update other users' orders
 
 ```
 
-### (DELETE) localhost:3000/order/:orderID
+### delete order by orderID
 requires [authorisation](#authorisation) 
 
 admins can delete every order, users can only delete an order if they made it
@@ -262,7 +262,7 @@ admins can delete every order, users can only delete an order if they made it
 
 
 ## order - admin
-### (GET) localhost:3000/orders/user/:userID
+### get orders by userID
 requires admin [authorisation](#authorisation)
 
 ```
